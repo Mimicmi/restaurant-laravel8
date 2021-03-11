@@ -4,13 +4,54 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+          @if (Session::has('message'))
+            <div class="alert alert-success">
+              {{ Session::get('message') }}
+            </div>
+          @endif
             <div class="card">
                 <div class="card-header">{{ __('All Categories') }}</div>
 
                 <div class="card-body">
-                  @foreach ($categories as $category)
-                      <p>{{$category->name}}</p>
-                  @endforeach
+                  <table class="table caption-top">
+                    <caption>List of food categories</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      @if (count($categories) > 0)
+                          
+                      @foreach ($categories as $key=>$category)
+                      <tr>
+                        <th scope="row">{{ $key + 1 }}</th>
+                        <td>{{ $category->name }}</td>
+                        <td>
+                          <a href="{{ route('category.edit', [$category->id]) }}">
+                            <button class="btn btn-outline-success">Edit</button>
+                          </a>
+                        </td>
+                        <td>
+                          <a href="">
+                            <button class="btn btn-outline-danger">Delete</button>
+
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                        
+                    @endforeach
+
+                    @else
+                    <td>No Category to display</td>
+                    @endif
+
+                  </table>
                 </div>
             </div>
         </div>
