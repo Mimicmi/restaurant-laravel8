@@ -14,7 +14,7 @@
 
                 <div class="card-body">
                   <table class="table caption-top">
-                    <caption>List of food food</caption>
+                    <caption>List of food</caption>
                     <thead>
                       <tr>
                         <th scope="col">Image</th>
@@ -35,7 +35,7 @@
                         <td><img src="{{ asset('images') }}/{{ $food->image }}" width="100"></td>
                         <td>{{ $food->name }}</td>
                         <td>{{ $food->description }}</td>
-                        <td>{{ $food->price }}</td>
+                        <td>{{ $food->price }}€</td>
                         <td>{{ $food->category_id }}</td>
                         {{-- <td>{{ $category->name }}</td> --}}
                         <td>
@@ -72,8 +72,7 @@
                           </div>
                         </td>
                       </tr>
-                    </tbody>
-                        
+                    </tbody>                        
                     @endforeach
 
                     @else
@@ -81,6 +80,9 @@
                     @endif
 
                   </table>
+                  <div>
+                    {{ $foods->links() }}
+                  </div>
                 </div>
             </div>
         </div>
