@@ -14,7 +14,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::latest()->paginate(1);
+        $foods = Food::latest()->paginate(5);
         return view('food.index', compact('foods'));
     }
 

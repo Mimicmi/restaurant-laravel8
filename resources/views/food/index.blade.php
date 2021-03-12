@@ -36,7 +36,7 @@
                         <td>{{ $food->name }}</td>
                         <td>{{ $food->description }}</td>
                         <td>{{ $food->price }}€</td>
-                        <td>{{ $food->category_id }}</td>
+                        <td>{{ $food->category->name }}</td>
                         {{-- <td>{{ $category->name }}</td> --}}
                         <td>
                           <a href="{{ route('food.edit', [$food->id]) }}">
