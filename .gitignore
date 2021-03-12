@@ -17,3 +17,5 @@ yarn-error.log
 .editorconfig
 .gitattributes
 .styleci.yml
+
+/public/images/
