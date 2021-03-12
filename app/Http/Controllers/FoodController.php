@@ -90,7 +90,33 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' =>'required',
+            'description' =>'required',
+            'price' => 'required | integer',
+            'category' =>'required',
+            'image' => 'mimes:jpg, jpeg, png, jfif'
+        ]);
+        $food = Food::find($id);
+        $name = $food->image;
+
+        if ($request->hasFile('image')){
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+        }
+
+        $food->update([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'price' => $request->get('price'),
+            'category' => $request->get('category'),
+            $food->image = $name
+        ]);
+        
+        $food->save();
+        return redirect()->route('food.index')->with('message', 'Food infos updated');
     }
 
     /**
