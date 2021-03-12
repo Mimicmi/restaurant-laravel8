@@ -14,11 +14,6 @@ use App\Http\Controllers\FoodController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -27,3 +22,4 @@ Route::resource('category', CategoryController::class)->middleware('auth');;
 Route::resource('food', FoodController::class)->middleware('auth');
 
 Route::get('/', [FoodController::class, 'listFood']);
+Route::get('/foods/{id}', [FoodController::class, 'details'])->name('food.details');

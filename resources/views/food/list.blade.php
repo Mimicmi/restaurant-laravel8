@@ -16,7 +16,11 @@
             <p class="text-center">{{ $food->name }}</p>
             <p class="text-center">{{ $food->price }}€</p>
 
-            <p class="text-center"><a href="">View</a></p>
+            <p class="text-center">
+              <a href="{{route('food.details', [$food->id])}}">
+                <button class="btn btn-outline-primary">Details</button>
+              </a>
+            </p>
           </div>
           @endforeach
         </div>

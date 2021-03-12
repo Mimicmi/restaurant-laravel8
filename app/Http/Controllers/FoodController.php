@@ -137,4 +137,9 @@ class FoodController extends Controller
         $categories = Category::with('food')->get();
         return view('food.list', compact('categories'));
     }
+
+    public function details($id) {
+        $food = Food::find($id);
+        return view('food.view', compact('food'));
+    }
 }
