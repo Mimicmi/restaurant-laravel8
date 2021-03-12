@@ -37,7 +37,6 @@
                         <td>{{ $food->description }}</td>
                         <td>{{ $food->price }}€</td>
                         <td>{{ $food->category->name }}</td>
-                        {{-- <td>{{ $category->name }}</td> --}}
                         <td>
                           <a href="{{ route('food.edit', [$food->id]) }}">
                             <button class="btn btn-outline-success">Edit</button>
