@@ -14,7 +14,8 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        $foods = Food::latest()->get();
+        return view('food.index', compact('foods'));
     }
 
     /**
@@ -40,7 +41,7 @@ class FoodController extends Controller
             'description' =>'required',
             'price' => 'required | integer',
             'category' =>'required',
-            'image' => 'required|mimes:jpg, jpeg, png'
+            'image' => 'required|mimes:jpg, jpeg, png, jfif'
         ]);
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
